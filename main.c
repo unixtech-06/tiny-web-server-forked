@@ -43,10 +43,6 @@
 #include <time.h>
 #include <unistd.h>
 
-#define LISTENQ 1024
-#define MAXLINE 1024
-#define RIO_BUFSIZE 1024
-
 /* Constants for listening queue size, maximum line length, and buffer size */
 #define LISTENQ 1024
 #define MAXLINE 1024
@@ -447,7 +443,8 @@ process(int fd, struct sockaddr_in *clientaddr)
 
 /* Main server loop */
 int
-main(int argc, char **argv) {
+main(int argc, char **argv)
+{
 	struct sockaddr_in clientaddr;
 	int default_port = 9999, connfd;
 	char buf[256];
