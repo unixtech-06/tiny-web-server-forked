@@ -3,4 +3,5 @@ project(tiny_webserver C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(tiny_webserver main.c)
+add_executable(tiny_webserver main.c
+        pathname.h)
