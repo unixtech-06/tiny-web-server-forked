@@ -102,7 +102,6 @@ mime_map meme_types[] = {
 
 void format_size(char *buf, const struct stat *stat);
 void handle_directory_request(int out_fd, int dir_fd, char *filename);
-static const char *get_mime_type(const char *filename);
 int open_listenfd(int port);
 void url_decode(const char *src, char *dest, int max);
 void parse_request(int fd, http_request *req);
