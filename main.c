@@ -34,6 +34,7 @@ rio_readinitb(rio_t * rp, int fd)
 	rp->rio_cnt = 0;	/* Initialize the unread bytes count */
 	rp->rio_bufptr = rp->rio_buf;	/* Initialize buffer pointer */
 }
+
 /* Robustly writes 'n' bytes (buffered) */
 static ssize_t 
 writen(int fd, const void *usrbuf, size_t n)
@@ -48,18 +49,19 @@ writen(int fd, const void *usrbuf, size_t n)
 		//Error handling for invalid file descriptor
 	}
 
-			while (nleft > 0) {
-				if ((nwritten = write(fd, bufp, nleft)) <= 0) {
-					if (errno == EINTR)
-						nwritten = 0;	/* Call was interrupted */
-					else
-						return -1;	/* An error occurred */
-				}
-				nleft -= nwritten;
-				bufp += nwritten;
+		while (nleft > 0) {
+			if ((nwritten = write(fd, bufp, nleft)) <= 0) {
+				if (errno == EINTR)
+					nwritten = 0;	/* Call was interrupted */
+				else
+					return -1;	/* An error occurred */
 			}
-		return n;
-	}
+			nleft -= nwritten;
+			bufp += nwritten;
+		}
+	return n;
+}
+
 /* Buffered read function for rio_t structure */
 static ssize_t
 rio_read(rio_t * rp, char *usrbuf, size_t n)
