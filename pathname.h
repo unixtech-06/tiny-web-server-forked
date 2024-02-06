@@ -100,10 +100,6 @@ mime_map meme_types[] = {
     {NULL, NULL},
 };
 
-static void rio_readinitb(rio_t *rp, int fd);
-static ssize_t writen(int fd, const void *usrbuf, size_t n);
-static ssize_t rio_read(rio_t *rp, char *usrbuf, size_t n);
-static ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen);
 void format_size(char *buf, const struct stat *stat);
 void handle_directory_request(int out_fd, int dir_fd, char *filename);
 static const char *get_mime_type(const char *filename);
