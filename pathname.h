@@ -47,9 +47,9 @@
 /*
  * Constants for listening queue size, maximum line length, and buffer size.
  */
-#define LISTENQ 1024
-#define MAXLINE 1024
-#define RIO_BUFSIZE 1024
+constexpr auto LISTENQ = 1024;
+constexpr auto MAXLINE = 1024;
+constexpr auto RIO_BUFSIZE = 1024;
 
 /*
  * Robust I/O (Rio) package buffer structure.
@@ -101,16 +101,14 @@ mime_map meme_types[] = {
 };
 
 void format_size(char *buf, const struct stat *stat);
-void handle_directory_request(int out_fd, int dir_fd, char *filename);
+void handle_directory_request(int const out_fd, int const dir_fd, char const* const filename);
 int open_listenfd(int port);
 void url_decode(const char *src, char *dest, int max);
 void parse_request(int fd, http_request *req);
-void log_access(int status, struct sockaddr_in *c_addr, http_request *req);
+void log_access(int const status, struct sockaddr_in const* const c_addr, http_request const* const req);
 void client_error(int fd, int status, char *msg, char *longmsg);
 void serve_static(int out_fd, int in_fd, const http_request *req, size_t total_size);
-void process(int fd, struct sockaddr_in *clientaddr);
-
-int main(int argc, char **argv);
+void process(int fd, struct sockaddr_in const* const clientaddr);
 
 /*
  * Detailed function implementations follow.
