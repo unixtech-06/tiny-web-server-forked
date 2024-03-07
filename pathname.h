@@ -47,9 +47,9 @@
 /*
  * Constants for listening queue size, maximum line length, and buffer size.
  */
-#define LISTENQ 1024
-#define MAXLINE 1024
-#define RIO_BUFSIZE 1024
+constexpr auto LISTENQ = 1024;
+constexpr auto MAXLINE = 1024;
+constexpr auto RIO_BUFSIZE = 1024;
 
 /*
  * Robust I/O (Rio) package buffer structure.
